@@ -8,6 +8,6 @@ MODPROBE_LIST=`find /lib/modules/$(uname -r) -type f -name *.ko* -exec bash -c '
 # https://unix.stackexchange.com/questions/9784/how-can-i-read-line-by-line-from-a-variable-in-bash
 while IFS= read -r line
 do
-	modprobe -r $line
-	modprobe $line
+	NAME=`echo $line | tr -d '\n' | tr -d '\r'`
+	sudo timeout --signal=9 1s modprobe -r $NAME && sudo timeout --signal=9 1s modprobe $NAME &
 done < <(printf '%s\n' "$MODPROBE_LIST")
