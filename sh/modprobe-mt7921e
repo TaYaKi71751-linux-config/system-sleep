@@ -1,0 +1,4 @@
+#!/bin/bash
+
+modprobe -r mt7921e
+modprobe mt7921e

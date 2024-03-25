@@ -1,0 +1,19 @@
+Description=Restart Modprobe mt7921e
+
+
+[Service]
+
+Type=simple
+
+User=root
+
+ExecStart= bash /usr/lib/systemd/system-sleep/modprobe-mt7921e
+
+RemainAfterExit=no
+Restart=on-failure
+RestartSec=60s
+
+[Install]
+
+WantedBy=multi-user.target
+
